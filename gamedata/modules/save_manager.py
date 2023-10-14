@@ -1,7 +1,7 @@
 class SaveObject:
     """Object that holds all the save data."""
 
-    def __init__(self, save_list: list[str]) -> None:
+    def __init__(self, save_list: list) -> None:
         
         # JOURNEY STATUS
         self.journey_type = save_list[0]
@@ -53,14 +53,9 @@ class SaveManager:
         self.save3_name = "save3"
         self.save_reset_name = "save_reset"
 
-        self.save_path = "OregonTrail/gamedata/saves/"
-
+        self.save_path = "gamedata/saves/"
         self.current_save = self.load_save(0)
-        print(self.current_save)
 
-
-    def get_save_data(self, save):
-        """"""
 
     def load_save(self, save_number: int):
         """Load the save with the inputed number."""
@@ -70,7 +65,7 @@ class SaveManager:
             save = file.readlines()
 
         # Remove the newline suffixes.
-        for value in range(self.current_save.__len__()):
+        for value in range(save.__len__()):
             save[value] = save[value].removesuffix("\n")
 
         return SaveObject(save)
@@ -110,5 +105,3 @@ class SaveManager:
             raise "Invalid Number! "+str(save_number)
         
         return self.save_path+a
-
-SaveManager()
