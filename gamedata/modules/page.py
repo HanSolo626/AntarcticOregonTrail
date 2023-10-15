@@ -1,4 +1,5 @@
 from button import *
+from image_manager import *
 
 class Page:
     """The parent class for all Pages."""
@@ -16,8 +17,22 @@ class Page:
 
         self.button_list = button_list
 
-
+    def draw_self(self):
+        self.screen.blit
 
     def draw_buttons(self):
         for button in self.button_list:
             button.draw_button(self.screen)
+
+
+
+
+class TestPage(Page):
+    def __init__(self, ai_game) -> None:
+        super().__init__(ai_game)
+
+        self.background = Image("Test Background")
+
+        self.set_button_list(
+            TestButton(1600, 600)
+            )
