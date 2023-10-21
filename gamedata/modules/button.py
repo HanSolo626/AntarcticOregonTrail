@@ -37,7 +37,7 @@ class Button:
         # Render a Surface from the font object.
         self.word_image = self.font.render(self.words, True, self.letter_color)
         self.word_image_rect = self.word_image.get_rect()
-        self.word_image_rect.center = self.image_rect
+        self.word_image_rect.center = self.image_rect.center
 
 
     def check_button(self, mouse_pos):
@@ -58,6 +58,6 @@ class Button:
 
 class TestButton(Button):
     def __init__(self, x: int, y: int) -> None:
-        super().__init__()
+        super().__init__(self)
 
-        self.set_stats("", Image("ArrowRight"), 0, (0,0,0), x, y)
+        self.set_stats("", Image("ArrowRight").return_image(), 0, (0,0,0), x, y)

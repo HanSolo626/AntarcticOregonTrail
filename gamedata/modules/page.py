@@ -13,7 +13,7 @@ class Page:
         self.background_rect = None
 
 
-    def set_button_list(self, button_list: list[Button]):
+    def set_button_list(self, button_list: list):
         """Set the button list in list format."""
 
         self.button_list = button_list
@@ -39,8 +39,9 @@ class TestPage(Page):
     def __init__(self, ai_game) -> None:
         super().__init__(ai_game)
 
-        self.background = Image("Test Background")
+        self.set_background(Image("Test Background").return_image())
 
-        self.set_button_list(
+        self.set_button_list([
             TestButton(1600, 600)
+        ]
             )
