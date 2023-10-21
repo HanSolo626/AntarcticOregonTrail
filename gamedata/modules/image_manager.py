@@ -18,7 +18,7 @@ class ImageManager:
 
 
         # Do not change!
-        self.image_path = "OregonTrail/gamedata/images/"
+        self.image_path = "AntarcticOregonTrail/gamedata/images/"
 
 
         # Prep images
