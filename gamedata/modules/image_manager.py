@@ -15,7 +15,7 @@ class ImageManager:
             "Trogdor":"trogdor1_still.png",
 
             # Test background
-            "Test Background":"test_bacground.png",
+            "Test Background":"test_background.png",
 
             "ArrowRight":"black_arrow_right.png"
 
