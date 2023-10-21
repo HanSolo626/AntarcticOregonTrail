@@ -23,7 +23,7 @@ class ImageManager:
 
 
         # Do not change!
-        self.image_path = "AntarcticOregonTrail/gamedata/images/"
+        self.image_path = "gamedata/images/"
 
 
         # Prep images
@@ -40,9 +40,12 @@ class ImageManager:
         return self.image_dict
     
 class Image(ImageManager):
-    def __init__(self, image_name: str) -> None:
+    def __init__(self, image_name: str):
         super().__init__()
-
-        return self.get_image(image_name)
     
+        self.image = self.get_image(image_name)
+
+    def return_image(self):
+        """Return image."""
+        return self.image
     
