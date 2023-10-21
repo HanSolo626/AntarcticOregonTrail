@@ -1,5 +1,8 @@
 import pygame, sys
+
+
 from FacillimumLibraryOregon import Facillimum_Library
+from gamedata.modules.page import *
 
 class Main:
     def __init__(self) -> None:
@@ -10,6 +13,9 @@ class Main:
         self.screen_rect = self.screen.get_rect()
 
         self.FL = Facillimum_Library(self.screen)
+
+        # Test page
+        self.page = TestPage(self)
 
 
     def check_events(self):
@@ -24,8 +30,11 @@ class Main:
         #sys.exit()
         while True:
             self.check_events()
-            self.FL.paint_screen("white")
-            self.FL.draw_words("Command Q to quit.", 50, (50, 50), False, "black")
+            #self.FL.paint_screen("white")
+            #self.FL.draw_words("Command Q to quit.", 50, (50, 50), False, "black")
+
+            self.page.draw_self()
+
             self.FL.update()
 
 if __name__ == "__main__":

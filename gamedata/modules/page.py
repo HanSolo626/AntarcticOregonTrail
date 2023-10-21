@@ -1,5 +1,5 @@
-from button import *
-from image_manager import *
+from gamedata.modules.button import *
+from gamedata.modules.image_manager import *
 
 class Page:
     """The parent class for all Pages."""
@@ -10,6 +10,7 @@ class Page:
         
         self.button_list = []
         self.background = None
+        self.background_rect = None
 
 
     def set_button_list(self, button_list: list[Button]):
@@ -18,11 +19,18 @@ class Page:
         self.button_list = button_list
 
     def draw_self(self):
-        self.screen.blit
+        self.screen.blit(self.background, self.background_rect)
+        self.draw_buttons()
 
     def draw_buttons(self):
         for button in self.button_list:
             button.draw_button(self.screen)
+
+    def set_background(self, image: Image):
+        """Set the image for the page background."""
+        self.background = image
+        self.background_rect = image.get_rect()
+
 
 
 

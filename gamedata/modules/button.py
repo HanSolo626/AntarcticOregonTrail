@@ -1,5 +1,5 @@
 import pygame
-from image_manager import Image
+from gamedata.modules.image_manager import *
 
 class Button:
     """The parent class for all buttons."""
