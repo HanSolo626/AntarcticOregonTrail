@@ -5,8 +5,10 @@ class Actor:
 
     def __init__(self) -> None:
         
-        self.profession = str
-        self.description = str
+        self.profession = ""
+        self.description = ""
+
+        self.name = "None"
 
         self.abilities = None
 
