@@ -1,4 +1,6 @@
 import random
+from statement import *
+# import everything from statement.py
 
 class Event:
     """The parent class for all event types. Made up of Statement objects."""
@@ -19,12 +21,30 @@ class Event:
         """Return the full list of statements."""
         return self.statement_list
     
-    def set_statement_list(self, statement_list: list):
+    def set_statement_list(self, statement_list: list[Statement]):
         """Redefine the statement list."""
         self.statement_list = statement_list
 
 
 # Put new Event objects between Event and RandomEvent
+
+class TestEvent1(Event):
+    """An event used for testing."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        
+        self.set_statement_list([PrintStatement("greetings earthlings!"), PrintStatement("hello in there!")])
+
+class TestEvent2(Event):
+    """An event used for testing."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        
+        self.set_statement_list([PrintStatement("I am from Mars!")])
+
+
 
 
 class RandomEvent(Event):
@@ -38,5 +58,3 @@ class RandomEvent(Event):
 
         return self.selected_event()
     
-
-
