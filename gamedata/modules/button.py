@@ -45,7 +45,13 @@ class Button:
 
         # If the mouse is hovering over the image rect...
         if self.image_rect.collidepoint(mouse_pos):
-            print("ha")
+            self.perform_function()
+
+
+    def perform_function(self):
+        """Do the button's function, whatever that may be."""
+
+        print("ha")
 
 
     def draw_button(self, screen):

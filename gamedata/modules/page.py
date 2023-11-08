@@ -26,6 +26,10 @@ class Page:
         for button in self.button_list:
             button.draw_button(self.screen)
 
+    def check_buttons(self, mouse_pos):
+        for button in self.button_list:
+            button.check_button(mouse_pos)
+
     def set_background(self, image: Image):
         """Set the image for the page background."""
         self.background = image
