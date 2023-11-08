@@ -12,7 +12,12 @@ class ImageManager:
         self.image_dict = {
             
             # Test image.
-            "Trogdor":"trogdor1_still.png"
+            "Trogdor":"trogdor1_still.png",
+
+            # Test background
+            "Test Background":"test_background.png",
+
+            "ArrowRight":"black_arrow_right.png"
 
         }
 
