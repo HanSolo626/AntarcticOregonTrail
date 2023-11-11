@@ -40,18 +40,27 @@ class Button:
         self.word_image_rect.center = self.image_rect.center
 
 
-    def check_button(self, mouse_pos):
+    def check_button(self, mouse_button_status):
         """Check if the button is being clicked and do whatever asignment it was given."""
 
         # If the mouse is hovering over the image rect...
-        if self.image_rect.collidepoint(mouse_pos):
-            self.perform_function()
+        if self.image_rect.collidepoint(pygame.mouse.get_pos()):
+            self.perform_hover_function()
+
+            # If the mouse is clicked too...
+            if mouse_button_status:
+                self.perform_click_function()
 
 
-    def perform_function(self):
-        """Do the button's function, whatever that may be."""
+    def perform_click_function(self):
+        """Do the function when the button is being clicked on."""
 
         print("ha")
+
+    def perform_hover_function(self):
+        """Do the function when the button is being hovered over."""
+        
+        print("ho!")
 
 
     def draw_button(self, screen):
