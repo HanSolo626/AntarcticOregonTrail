@@ -1,31 +1,33 @@
 import pygame
 from gamedata.modules.image_manager import *
+from gamedata.modules.high_variable_manager import *
 
 class Button:
     """The parent class for all buttons."""
     
-    def __init__(self, function) -> None:
+    def __init__(self, function, x: int, y: int) -> None:
         
+        self.action = None
+        self.hover = None
         self.words = str
         self.letter_size = 0
         self.letter_color = (0, 0 ,0)
         self.image = None
         self.funtion = function
 
-        self.x = int
-        self.y = int
+        self.x = x
+        self.y = y
 
 
         
-    def set_stats(self, words: str, image: pygame.Surface, letter_size: int, letter_color, x: int, y: int):
+    def set_stats(self, action: VariableManager, words: str, image: pygame.Surface, letter_size: int, letter_color):
         """Set the image, letter size, and letter color of the button. letter_color must be (R,G,B) format. example for red: (255, 0, 0)"""
 
+        self.action = action
         self.words = words
         self.image = image
         self.letter_size = letter_size
         self.letter_color = letter_color
-        self.x = x
-        self.y = y
 
         self.image_rect = self.image.get_rect()
         self.image_rect.x = self.x
@@ -54,12 +56,12 @@ class Button:
 
     def perform_click_function(self):
         """Do the function when the button is being clicked on."""
+        self.action(self)
 
-        print("ha")
 
     def perform_hover_function(self):
         """Do the function when the button is being hovered over."""
-        
+
         print("ho!")
 
 
@@ -72,7 +74,15 @@ class Button:
 
 
 class TestButton(Button):
-    def __init__(self, x: int, y: int) -> None:
-        super().__init__(self)
+    def __init__(self, function, x: int, y: int) -> None:
+        super().__init__(function, x, y)
 
-        self.set_stats("", Image("ArrowRight").return_image(), 0, (0,0,0), x, y)
+        self.set_stats(function, "", Image("ArrowRight").return_image(), 0, (0,0,0))
+
+
+class ExitGame(Button):
+    def __init__(self, function, x: int, y: int) -> None:
+        super().__init__(function, x, y)
+
+        self.set_stats(function, "", Image("Exit").return_image(), 0, (0,0,0))
+

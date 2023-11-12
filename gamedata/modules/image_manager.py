@@ -17,7 +17,8 @@ class ImageManager:
             # Test background
             "Test Background":"test_background.png",
 
-            "ArrowRight":"black_arrow_right.png"
+            "ArrowRight":"black_arrow_right.png",
+            "Exit":"logout.png",
 
         }
 

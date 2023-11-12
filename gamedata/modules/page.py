@@ -1,5 +1,6 @@
 from gamedata.modules.button import *
 from gamedata.modules.image_manager import *
+from gamedata.modules.high_variable_manager import *
 
 class Page:
     """The parent class for all Pages."""
@@ -46,6 +47,7 @@ class TestPage(Page):
         self.set_background(Image("Test Background").return_image())
 
         self.set_button_list([
-            TestButton(1600, 600)
+            TestButton(VariableManager.print_message, 1600, 600),
+            ExitGame(VariableManager.exit_game, 50, 1000)
         ]
             )

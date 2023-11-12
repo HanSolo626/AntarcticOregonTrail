@@ -1,4 +1,5 @@
-from save_manager import SaveManager
+from gamedata.modules.save_manager import SaveManager
+import sys
 
 class VariableManager:
     """The class that manages the modification of important variables such as health of actors and points."""
@@ -17,4 +18,13 @@ class VariableManager:
         """Loads the save as current_save_data, and returns it."""
         self.save_data_object = self.save_manager.load_save(save_number)
         return self.save_data_object
+    
+
+    def exit_game(self):
+        """Exit the game."""
+        sys.exit()
+
+    def print_message(self):
+        """Print message into the terminal."""
+        print("message")
 
