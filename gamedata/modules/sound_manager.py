@@ -20,8 +20,8 @@ class SoundManager:
             self.effect_channel5,
             self.effect_channel6
         ]
-        self.track_path = "OregonTrail/gamedata/sounds/tracks/"
-        self.effect_path = "OregonTrail/gamedata/sounds/effects/"
+        self.track_path = "gamedata/sounds/tracks/"
+        self.effect_path = "gamedata/sounds/effects/"
 
 
 

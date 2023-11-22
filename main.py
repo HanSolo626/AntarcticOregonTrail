@@ -36,7 +36,6 @@ class Main:
 
             # Check for mouse clicks
             elif event.type == pygame.MOUSEBUTTONUP:
-                self.recorded_lod = True
                 if not pygame.mouse.get_pressed()[0]:
                     self.left_click = False
                 if not pygame.mouse.get_pressed()[2]:
