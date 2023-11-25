@@ -1,6 +1,6 @@
 import pygame
 from gamedata.modules.image_manager import *
-from gamedata.modules.high_variable_manager import *
+#from gamedata.modules.high_variable_manager import *
 from gamedata.modules.sound_manager import *
 
 class Button:
@@ -25,7 +25,7 @@ class Button:
 
 
         
-    def set_stats(self, action: VariableManager, words: str, normal_image: pygame.Surface, hover_image: pygame.Surface, letter_size: int, letter_color, sound_effect: str):
+    def set_stats(self, action, words: str, normal_image: pygame.Surface, hover_image: pygame.Surface, letter_size: int, letter_color, sound_effect: str):
         """
         Set the image, letter size, letter color, and sound of the button. letter_color must be (R,G,B) format. example for red: (255, 0, 0). \n
         NOTE: When setting hover_image, put in None if no hover current_image is desired.
@@ -88,7 +88,11 @@ class Button:
 
     def perform_click_function(self):
         """Do the function when the button is being clicked on."""
-        self.action(self)
+        if type(self.action) == tuple:
+            self.action[0](self.action[1])
+            print("g")
+        else:
+            self.action(self)
 
 
     def perform_hover_function(self):
@@ -108,7 +112,7 @@ class TestButton(Button):
     def __init__(self, function, x: int, y: int) -> None:
         super().__init__(function, x, y)
 
-        self.set_stats(function, "yay", Image("ArrowRight").return_image(), None, 10, (255,0,0), "Z_Secret")
+        self.set_stats(function, "yay", Image("ArrowRight").return_image(), None, 50, (255,0,0), "Z_Secret")
 
 
 class ExitGame(Button):
@@ -116,4 +120,10 @@ class ExitGame(Button):
         super().__init__(function, x, y)
 
         self.set_stats(function, "", Image("Exit").return_image(), None, 0, (0,0,0), None)
+
+class HomeOptions(Button):
+    def __init__(self, function, x: int, y: int) -> None:
+        super().__init__(function, x, y)
+
+        self.set_stats(function, "", Image("Options").return_image(), Image("OptionsHover").return_image(), 0, (0,0,0), "ButtonClicked")
 

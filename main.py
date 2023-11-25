@@ -2,7 +2,9 @@ import pygame, sys
 
 
 from FacillimumLibraryOregon import Facillimum_Library
+from gamedata.modules.high_variable_manager import VariableManager
 from gamedata.modules.page import *
+from gamedata.modules.high_variable_manager import *
 
 class Main:
     def __init__(self) -> None:
@@ -13,9 +15,9 @@ class Main:
         self.screen_rect = self.screen.get_rect()
 
         self.FL = Facillimum_Library(self.screen)
+        self.hvm = VariableManager()
 
-        # Test page
-        self.current_page = TestPage(self)
+        self.hvm.current_page = HomeMenu(self)
 
         # Mouse button status
         self.left_click = False
@@ -51,7 +53,8 @@ class Main:
 
     def check_current_page(self):
         """Check the current page."""
-        self.current_page.check_buttons(self.left_click)
+        self.hvm.current_page.check_buttons(self.left_click)
+        
 
 
 
@@ -70,7 +73,8 @@ class Main:
 
 
             # Update and draw everything
-            self.current_page.draw_self()
+            
+            self.hvm.current_page.draw_self()
             self.FL.update()
 
 

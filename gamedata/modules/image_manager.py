@@ -17,8 +17,13 @@ class ImageManager:
             # Test background
             "Test Background":"test_background.png",
 
+            "Options Background":"options_background.png",
+
             "ArrowRight":"black_arrow_right.png",
             "Exit":"logout.png",
+
+            "Options":"options.png",
+            "OptionsHover":"options_hover.png",
 
         }
 

@@ -1,4 +1,5 @@
 from gamedata.modules.button import *
+from gamedata.modules.high_variable_manager import VariableManager
 from gamedata.modules.image_manager import *
 from gamedata.modules.high_variable_manager import *
 
@@ -51,3 +52,26 @@ class TestPage(Page):
             ExitGame(VariableManager.exit_game, 50, 1000)
         ]
             )
+        
+
+class HomeMenu(Page):
+    def __init__(self, ai_game) -> None:
+        super().__init__(ai_game)
+
+        self.set_background(Image("Test Background").return_image())
+
+        self.set_button_list([
+            HomeOptions(VariableManager.set_current_page(self, OptionsMenu, self), 600, 600),
+            ExitGame(VariableManager.exit_game, 50, 1000)
+        ])
+
+
+class OptionsMenu(Page):
+    def __init__(self, ai_game) -> None:
+        super().__init__(ai_game)
+
+        self.set_background(Image("Options Background").return_image())
+
+        self.set_button_list([
+            ExitGame(VariableManager.exit_game, 50, 1000)
+        ])

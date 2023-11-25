@@ -37,7 +37,8 @@ class SoundManager:
         self.effect_dict = {
 
             # Format: "<name>:<file name>",
-            "Z_Secret":"ZeldaSecret.wav"
+            "Z_Secret":"ZeldaSecret.wav",
+            "ButtonClicked":"button_clicked.mp3"
 
         }
 
