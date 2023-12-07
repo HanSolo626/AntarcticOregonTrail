@@ -1,6 +1,7 @@
 import pygame
+
 from gamedata.modules.image_manager import *
-#from gamedata.modules.high_variable_manager import *
+
 from gamedata.modules.sound_manager import *
 
 class Button:
@@ -22,6 +23,7 @@ class Button:
         self.y = y
 
         self.sm = SoundManager()
+
 
 
         
@@ -54,6 +56,8 @@ class Button:
         if hover_image == None:
             self.hover_image = self.normal_image
 
+        self.current_image = self.hover_image
+
 
     def check_button(self, mouse_button_status):
         """Check if the button is being clicked and do whatever asignment it was given."""
@@ -76,7 +80,8 @@ class Button:
             # If the mouse is clicked too...
             if mouse_button_status and self.click:
                 self.perform_click_function()
-                self.sm.play_effect(self.sound)
+                if self.sound != None:
+                    self.sm.play_effect(self.sound)
                 self.click = False
 
         else:
@@ -88,11 +93,11 @@ class Button:
 
     def perform_click_function(self):
         """Do the function when the button is being clicked on."""
-        if type(self.action) == tuple:
-            self.action[0](self.action[1])
-            print("g")
-        else:
-            self.action(self)
+        self.action(self)
+        #if self.action:
+        #    print("g")
+        #else:
+        #    self.action(self) #NOTE BUG
 
 
     def perform_hover_function(self):
@@ -115,15 +120,21 @@ class TestButton(Button):
         self.set_stats(function, "yay", Image("ArrowRight").return_image(), None, 50, (255,0,0), "Z_Secret")
 
 
+
+
 class ExitGame(Button):
     def __init__(self, function, x: int, y: int) -> None:
         super().__init__(function, x, y)
+
+        print("passed")
 
         self.set_stats(function, "", Image("Exit").return_image(), None, 0, (0,0,0), None)
 
 class HomeOptions(Button):
     def __init__(self, function, x: int, y: int) -> None:
         super().__init__(function, x, y)
+
+        print("3")
 
         self.set_stats(function, "", Image("Options").return_image(), Image("OptionsHover").return_image(), 0, (0,0,0), "ButtonClicked")
 

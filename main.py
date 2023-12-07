@@ -15,9 +15,10 @@ class Main:
         self.screen_rect = self.screen.get_rect()
 
         self.FL = Facillimum_Library(self.screen)
-        self.hvm = VariableManager()
+        self.hvm = VariableManager(self)
+        
 
-        self.hvm.current_page = HomeMenu(self)
+        #self.hvm.current_page = HomeMenu(self)
 
         # Mouse button status
         self.left_click = False
