@@ -57,13 +57,11 @@ class VariableManager:
 
     def set_current_page(a, page):
         """Set the current page and init it."""
-        print(a)
 
         def func(self):
             a.hvm.current_page = page(a)
             # init buttons
             a.hvm.current_page.set_button_list(a.hvm.current_page.button_list)
-            print(a.hvm.current_page.button_list[0].normal_image)
             return None
         #print(self.current_page)
         

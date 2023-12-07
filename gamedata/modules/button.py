@@ -126,7 +126,6 @@ class ExitGame(Button):
     def __init__(self, function, x: int, y: int) -> None:
         super().__init__(function, x, y)
 
-        print("passed")
 
         self.set_stats(function, "", Image("Exit").return_image(), None, 0, (0,0,0), None)
 
@@ -134,7 +133,6 @@ class HomeOptions(Button):
     def __init__(self, function, x: int, y: int) -> None:
         super().__init__(function, x, y)
 
-        print("3")
 
         self.set_stats(function, "", Image("Options").return_image(), Image("OptionsHover").return_image(), 0, (0,0,0), "ButtonClicked")
 
