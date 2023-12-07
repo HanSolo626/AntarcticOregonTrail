@@ -50,7 +50,7 @@ class SoundManager:
             self.effect_dict[sound] = pygame.mixer.Sound(self.effect_path+self.effect_dict[sound])
 
         # Time out to allow for mixer to fully initilize.
-        time.sleep(2)
+        #time.sleep(2)
 
 
 

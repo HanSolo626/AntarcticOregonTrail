@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, time
 
 
 from FacillimumLibraryOregon import Facillimum_Library
@@ -23,6 +23,9 @@ class Main:
         # Mouse button status
         self.left_click = False
         self.right_click = False
+
+        # Time out to allow for sound manager to fully initilize.
+        time.sleep(2)
 
 
 
