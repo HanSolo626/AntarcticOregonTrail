@@ -16,6 +16,8 @@ class Main:
 
         self.FL = Facillimum_Library(self.screen)
         self.hvm = VariableManager(self)
+
+        self.fpsClock = pygame.time.Clock()
         
 
         #self.hvm.current_page = HomeMenu(self)
@@ -80,6 +82,9 @@ class Main:
             
             self.hvm.current_page.draw_self()
             self.FL.update()
+
+            # Ensures that game runs at even framerate.
+            self.fpsClock.tick(120)
 
 
 if __name__ == "__main__":

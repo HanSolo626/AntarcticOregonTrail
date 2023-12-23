@@ -2,6 +2,10 @@ import random
 from statement import *
 # import everything from statement.py
 
+
+from high_variable_manager import *
+
+
 class Event:
     """The parent class for all event types. Made up of Statement objects."""
 

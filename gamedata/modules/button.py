@@ -109,7 +109,66 @@ class Button:
         """Draw the button on the passed in screen."""
         screen.blit(self.current_image, self.image_rect)
         screen.blit(self.word_image, self.word_image_rect)
+
+
+
+
+class TextField:
+    """The parent class for text fields, used to display just text."""
+    def __init__(self, text: str, x: int, y: int) -> None:
         
+        self.text = text
+        self.x = x
+        self.y = y
+
+        self.text_number = 0
+        self.text_length = self.text.__len__()
+        self.currently_displayed_text = ""
+        self.sound_played = False
+
+        self.sm = SoundManager()
+
+
+    def set_stats(self, letter_size: int, letter_color, sound_effect: str):
+        """Set the the font size, the letter color, and the sound effect name, to be played when the text is displayed."""
+
+        self.letter_size = letter_size
+        self.letter_color = letter_color
+        self.sound_effect = sound_effect
+
+        self.font =  pygame.font.SysFont("", self.letter_size)
+
+
+    def draw_button(self, screen):
+        """Draw the text field while updating the text span."""
+
+        
+        word_image = self.font.render(self.currently_displayed_text, True, self.letter_color)
+        word_image_rect = word_image.get_rect()
+        word_image_rect.x = self.x
+        word_image_rect.y = self.y
+        screen.blit(word_image, word_image_rect)
+
+        
+        if not self.text_number == self.text_length:
+            self.currently_displayed_text += self.text[self.text_number]
+            self.text_number += 1
+
+        if self.sound_played == False:
+            self.sm.play_effect(self.sound_effect)
+            self.sound_played = True
+
+    def check_button(self, mouse_pos):
+        return None
+
+
+
+
+class SimpleField(TextField):
+    def __init__(self, text: str, x: int, y: int) -> None:
+        super().__init__(text, x, y)
+
+        self.set_stats(40, (255, 255, 255), "Z_Secret")
 
 
 
@@ -136,3 +195,8 @@ class HomeOptions(Button):
 
         self.set_stats(function, "", Image("Options").return_image(), Image("OptionsHover").return_image(), 0, (0,0,0), "ButtonClicked")
 
+class NextButton(Button):
+    def __init__(self, function, x: int, y: int) -> None:
+        super().__init__(function, x, y)
+
+        self.set_stats(function, "", Image("Next").return_image(), Image("NextHover").return_image(), 0, (0,0,0), "ButtonClicked")

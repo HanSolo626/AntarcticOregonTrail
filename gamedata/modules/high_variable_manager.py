@@ -35,6 +35,8 @@ class VariableManager:
         if ai_game != None:
             self.current_page = HomeMenu(ai_game)
 
+            self.current_page = RoughTerrainOne(ai_game)
+
 
         self.ai_game = ai_game
 
@@ -127,3 +129,48 @@ class OptionsMenu(Page):
         self.set_button_list([
             ExitGame(VariableManager.exit_game, 50, 1000)
         ])
+
+
+
+###################
+### EVENT PAGES ###
+###################
+        
+
+
+
+
+class EventTransistion(Page):
+    def __init__(self, ai_game) -> None:
+        super().__init__(ai_game)
+
+        self.set_background(Image("WIP Background").return_image())
+
+
+
+
+
+
+class RoughTerrainOne(Page):
+    def __init__(self, ai_game) -> None:
+        super().__init__(ai_game)
+
+        self.set_background(Image("WIP Background").return_image())
+
+        self.set_button_list([
+            NextButton(VariableManager.set_current_page(ai_game, RoughTerrainTwo), 1500, 1000),
+            SimpleField("test test one two three 1234567890", 100, 100)
+        ])
+
+
+class RoughTerrainTwo(Page):
+    def __init__(self, ai_game) -> None:
+        super().__init__(ai_game)
+
+        self.set_background(Image("WIP Background").return_image())
+
+        self.set_button_list([
+            NextButton(VariableManager.set_current_page(ai_game, EventTransistion), 1500, 1000),
+            SimpleField("Greetings, my name is Hal and I'll be your AI assistent for the duration of the journey.", 100, 100)
+        ])
+

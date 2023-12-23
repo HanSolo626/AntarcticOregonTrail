@@ -14,8 +14,9 @@ class ImageManager:
             # Test image.
             "Trogdor":"trogdor1_still.png",
 
-            # Test background
+            # Backgrounds
             "Test Background":"test_background.png",
+            "WIP Background":"wip_background.png",
 
             "Options Background":"options_background.png",
 
@@ -24,6 +25,9 @@ class ImageManager:
 
             "Options":"options.png",
             "OptionsHover":"options_hover.png",
+
+            "Next":"_next.png",
+            "NextHover":"_next_hover.png",
 
         }
 
