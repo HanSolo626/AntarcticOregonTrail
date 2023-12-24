@@ -12,6 +12,7 @@
 from gamedata.modules.save_manager import SaveManager
 from gamedata.modules.button import *
 from gamedata.modules.page import *
+from gamedata.modules.strings import Strings
 
 import sys
 
@@ -39,7 +40,6 @@ class VariableManager:
 
 
         self.ai_game = ai_game
-
 
 
 
@@ -149,8 +149,6 @@ class EventTransistion(Page):
 
 
 
-
-
 class RoughTerrainOne(Page):
     def __init__(self, ai_game) -> None:
         super().__init__(ai_game)
@@ -159,7 +157,7 @@ class RoughTerrainOne(Page):
 
         self.set_button_list([
             NextButton(VariableManager.set_current_page(ai_game, RoughTerrainTwo), 1500, 1000),
-            SimpleField("test test one two three 1234567890", 100, 100)
+            SimpleField(Strings().strings[0], 100, 100)
         ])
 
 
@@ -171,6 +169,6 @@ class RoughTerrainTwo(Page):
 
         self.set_button_list([
             NextButton(VariableManager.set_current_page(ai_game, EventTransistion), 1500, 1000),
-            SimpleField("Greetings, my name is Hal and I'll be your AI assistent for the duration of the journey.", 100, 100)
+            BasicText("Greetings, my name is Hal and I'll be your AI assistent for the duration of the journey.", 100, 100)
         ])
 

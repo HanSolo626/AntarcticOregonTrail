@@ -83,10 +83,11 @@ class Main:
             self.hvm.current_page.draw_self()
             self.FL.update()
 
-            # Ensures that game runs at even framerate.
-            self.fpsClock.tick(120)
+            # Ensures that game runs at even framerate (60 frames per second).
+            self.fpsClock.tick(60)
 
 
 if __name__ == "__main__":
     ai = Main()
     ai.run_game()
+

@@ -120,6 +120,7 @@ class TextField:
         self.text = text
         self.x = x
         self.y = y
+        self.moving_text = None
 
         self.text_number = 0
         self.text_length = self.text.__len__()
@@ -129,14 +130,20 @@ class TextField:
         self.sm = SoundManager()
 
 
-    def set_stats(self, letter_size: int, letter_color, sound_effect: str):
+    def set_stats(self, letter_size: int, letter_color, sound_effect: str, moving_text: bool):
         """Set the the font size, the letter color, and the sound effect name, to be played when the text is displayed."""
 
         self.letter_size = letter_size
         self.letter_color = letter_color
         self.sound_effect = sound_effect
+        self.moving_text = moving_text
 
         self.font =  pygame.font.SysFont("", self.letter_size)
+
+        if not self.moving_text:
+            self.sound_played = True
+            self.text_number = self.text_length
+            self.currently_displayed_text = self.text
 
 
     def draw_button(self, screen):
@@ -164,11 +171,34 @@ class TextField:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class SimpleField(TextField):
     def __init__(self, text: str, x: int, y: int) -> None:
         super().__init__(text, x, y)
 
-        self.set_stats(40, (255, 255, 255), "Z_Secret")
+        self.set_stats(40, (255, 255, 255), "Z_Secret", False)
+
+
+class BasicText(TextField):
+    def __init__(self, text: str, x: int, y: int) -> None:
+        super().__init__(text, x, y)
+
+        self.set_stats(40, (255,255,255), "Z_Secret", True)
 
 
 
